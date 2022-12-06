@@ -17,15 +17,18 @@ export class PokemonService {
     return await this.prisma.pokemons.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} pokemon`;
+  async findOne(id: number) {
+    return await this.prisma.pokemons.findUnique({ where: { id } });
   }
 
-  update(id: number, updatePokemonDto: UpdatePokemonDto) {
-    return `This action updates a #${id} pokemon`;
+  async update(id: number, data: UpdatePokemonDto) {
+    return this.prisma.pokemons.update({
+      where: { id },
+      data,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} pokemon`;
+  async remove(id: number) {
+    return await this.prisma.pokemons.delete({ where: { id } });
   }
 }
