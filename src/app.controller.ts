@@ -3,7 +3,7 @@ import { AppService } from './app.service';
 
 // Ponto de partida da API.
 
-@Controller('/app')
+@Controller('/')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
